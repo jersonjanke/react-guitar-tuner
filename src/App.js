@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import getUserMedia from "get-user-media-promise";
 import MicrophoneStream from "microphone-stream";
 import Pitchfinder from "pitchfinder";
+import Tuner from "./Tuner";
 
 function App() {
   const [frequency, setFrequency] = useState(0);
+
+  useEffect(() => {
+    tunerHandler();
+  }, []);
 
   const tunerHandler = () => {
     getUserMedia({ video: false, audio: true }).then((stream) => {
@@ -21,7 +26,7 @@ function App() {
 
         const freq = detectPitch(MicrophoneStream.toRaw(chunk));
         if (freq) {
-          setFrequency(freq * 1.088);
+          setFrequency(freq);
         }
       });
     });
@@ -29,9 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <div>Guitar tuner</div>
-      <p>{frequency}</p>
-      <button onClick={tunerHandler}>Tuner</button>
+      <Tuner frequency={frequency} />
     </div>
   );
 }

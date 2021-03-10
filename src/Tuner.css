@@ -1,0 +1,33 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #3a4099;
+}
+
+.dot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #97ee00;
+  border-radius: 50%;
+  height: 64px;
+  width: 64px;
+  box-shadow: 0.6px 0.6px 0.6px 2px #292525d1;
+}
+
+.cursor {
+  background: #97ee00;
+  height: 45%;
+  left: 48.8%;
+  position: absolute;
+  top: 6.5%;
+  transform-origin: 40% 80%;
+  width: 8px;
+  border-radius: 8px;
+  box-shadow: 0.6px 0.6px 0.6px 2px #292525d1;
+  transform: rotate(0deg);
+  transform-origin: 0px 100%;
+}
